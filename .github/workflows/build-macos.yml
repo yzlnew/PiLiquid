@@ -20,7 +20,6 @@ jobs:
     runs-on: macos-26
     timeout-minutes: 30
     env:
-      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
       DERIVED_DATA: ${{ github.workspace }}/build/DerivedData
 
     steps:
@@ -29,11 +28,14 @@ jobs:
 
       - name: Select toolchain
         run: |
+          sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
+          xcode-select --print-path
           xcodebuild -version
-          swift --version
+          xcrun swift --version
 
       - name: Verify Git runtime
         run: |
+          xcrun --find git
           /usr/bin/git --version
           repo="$(mktemp -d)"
           trap 'rm -rf "$repo"' EXIT
