@@ -73,6 +73,17 @@ enum Fixture {
 
 // MARK: - Throwaway git repositories (service-level tests)
 
+private struct TempRepoGitError: Error, CustomStringConvertible {
+    let arguments: [String]
+    let output: String
+    let error: String
+
+    var description: String {
+        let command = (["/usr/bin/git"] + arguments).joined(separator: " ")
+        return "\(command) failed; stdout: \(output.debugDescription); stderr: \(error.debugDescription)"
+    }
+}
+
 /// A disposable git repo under the temp directory, with the identity configured
 /// so commits work on any machine. Call `destroy()` when done.
 struct TempRepo {
@@ -82,14 +93,21 @@ struct TempRepo {
         url = URL(fileURLWithPath: NSTemporaryDirectory())
             .appendingPathComponent("PiLiquidTests-\(prefix)-\(UUID().uuidString)", isDirectory: true)
         try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
-        git(["init", "-q", "-b", "main"])
-        git(["config", "user.name", "Tests"])
-        git(["config", "user.email", "tests@localhost"])
+        try requireGit(["init", "-q", "-b", "main"])
+        try requireGit(["config", "user.name", "Tests"])
+        try requireGit(["config", "user.email", "tests@localhost"])
     }
 
     @discardableResult
     func git(_ args: [String]) -> (out: String, err: String, ok: Bool) {
         GitService.run(args, in: url)
+    }
+
+    private func requireGit(_ args: [String]) throws {
+        let result = git(args)
+        guard result.ok else {
+            throw TempRepoGitError(arguments: args, output: result.out, error: result.err)
+        }
     }
 
     func write(_ name: String, _ content: String) throws {
