@@ -32,6 +32,13 @@ jobs:
           xcodebuild -version
           swift --version
 
+      - name: Verify Git runtime
+        run: |
+          /usr/bin/git --version
+          repo="$(mktemp -d)"
+          trap 'rm -rf "$repo"' EXIT
+          /usr/bin/git -C "$repo" init -q -b main
+
       - name: Install XcodeGen
         run: brew install xcodegen
 
@@ -46,7 +53,6 @@ jobs:
             -configuration Debug \
             -destination 'platform=macOS' \
             -derivedDataPath "$DERIVED_DATA" \
-            CODE_SIGNING_ALLOWED=NO \
             test
 
       - name: Build universal release
