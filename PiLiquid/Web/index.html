@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="katex.min.css">
+<script src="katex.min.js"></script>
+<script src="auto-render.min.js"></script>
+<script src="marked.min.js"></script>
+<script src="math-protection.js"></script>
+<script src="mermaid.min.js"></script>
+<style>
+  :root { color-scheme: light dark; }
+  html, body { margin: 0; padding: 0; background: transparent; overflow: hidden; }
+  #content {
+    font: 400 14.5px/1.6 -apple-system, "SF Pro Text", system-ui, sans-serif;
+    letter-spacing: -0.01em;
+    color: rgba(0,0,0,0.90);
+    -webkit-font-smoothing: antialiased;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+  @media (prefers-color-scheme: dark) { #content { color: rgba(255,255,255,0.92); } }
+
+  /* Each top-level Markdown block lives in its own .md-block wrapper (for
+     incremental streaming updates); trim the outer margins through them. */
+  #content > .md-block:first-child > :first-child { margin-top: 0; }
+  #content > .md-block:last-child  > :last-child  { margin-bottom: 0; }
+  p { margin: 0 0 0.7em; }
+  h1,h2,h3,h4 { font-weight: 600; line-height: 1.3; margin: 1.1em 0 0.5em; letter-spacing: -0.02em; }
+  h1 { font-size: 1.45em; } h2 { font-size: 1.28em; } h3 { font-size: 1.13em; } h4 { font-size: 1em; }
+  ul, ol { margin: 0 0 0.7em; padding-left: 1.4em; }
+  li { margin: 0.15em 0; }
+  li > ul, li > ol { margin: 0.15em 0; }
+  a { color: -apple-system-blue; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  code {
+    font: 0.88em ui-monospace, "SF Mono", Menlo, monospace;
+    background: rgba(0,0,0,0.06);
+    padding: 0.12em 0.34em;
+    border-radius: 5px;
+  }
+  @media (prefers-color-scheme: dark) { code { background: rgba(255,255,255,0.10); } }
+  pre {
+    background: rgba(0,0,0,0.05);
+    border-radius: 11px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    margin: 0 0 0.7em;
+  }
+  @media (prefers-color-scheme: dark) { pre { background: rgba(255,255,255,0.06); } }
+  pre code { background: none; padding: 0; font-size: 0.86em; line-height: 1.5; }
+
+  /* Copy button anchored to each code block's top-right corner. */
+  .code-block { position: relative; }
+  .code-block .copy-btn {
+    position: absolute; top: 7px; right: 7px;
+    display: flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; padding: 0;
+    border: none; border-radius: 7px;
+    background: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.5);
+    opacity: 0; transition: opacity 0.12s ease, background 0.12s ease, color 0.12s ease;
+    cursor: pointer;
+  }
+  .code-block:hover .copy-btn, .copy-btn.copied { opacity: 1; }
+  .copy-btn:hover { background: rgba(0,0,0,0.12); color: rgba(0,0,0,0.82); }
+  .copy-btn.copied { color: #34c759; }
+  .copy-btn svg { width: 14px; height: 14px; }
+  @media (prefers-color-scheme: dark) {
+    .code-block .copy-btn { background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.55); }
+    .copy-btn:hover { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.92); }
+    .copy-btn.copied { color: #30d158; }
+  }
+
+  blockquote {
+    margin: 0 0 0.7em; padding: 0.1em 0 0.1em 0.9em;
+    border-left: 3px solid rgba(0,0,0,0.18);
+    color: rgba(0,0,0,0.62);
+  }
+  @media (prefers-color-scheme: dark) {
+    blockquote { border-left-color: rgba(255,255,255,0.22); color: rgba(255,255,255,0.6); }
+  }
+
+  /* Rounded outer frame via a clipping wrapper; cells draw only inner gridlines. */
+  .table-wrap {
+    border: 1px solid rgba(0,0,0,0.14);
+    border-radius: 10px;
+    overflow: hidden;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 0.7em;
+  }
+  table { border-collapse: collapse; margin: 0; font-size: 0.95em; }
+  th, td {
+    border: 0;
+    border-right: 1px solid rgba(0,0,0,0.12);
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    padding: 6px 11px;
+    text-align: left;
+  }
+  th:last-child, td:last-child { border-right: 0; }
+  tr:last-child td { border-bottom: 0; }
+  th { font-weight: 600; background: rgba(0,0,0,0.035); }
+  @media (prefers-color-scheme: dark) {
+    .table-wrap { border-color: rgba(255,255,255,0.16); }
+    th, td { border-right-color: rgba(255,255,255,0.14); border-bottom-color: rgba(255,255,255,0.14); }
+    th { background: rgba(255,255,255,0.06); }
+  }
+
+  hr { border: none; border-top: 1px solid rgba(0,0,0,0.12); margin: 1em 0; }
+  @media (prefers-color-scheme: dark) { hr { border-top-color: rgba(255,255,255,0.14); } }
+
+  img { max-width: 100%; }
+  .katex-display { margin: 0.6em 0; overflow-x: auto; overflow-y: hidden; }
+
+  .mermaid-diagram { margin: 0 0 0.7em; overflow-x: auto; }
+  .mermaid-diagram svg { max-width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<div id="content"></div>
+<script>
+  marked.setOptions({ gfm: true, breaks: true });
+
+  const content = document.getElementById('content');
+
+  const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>';
+  const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>';
+
+  // Wrap each <pre> and pin a copy button to its corner. The clipboard write
+  // is delegated to the native side (file:// is not a secure context).
+  function enhanceCodeBlocks(root) {
+    root.querySelectorAll('pre').forEach(function (pre) {
+      if (pre.parentElement && pre.parentElement.classList.contains('code-block')) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(pre);
+
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.title = 'Copy';
+      btn.innerHTML = COPY_SVG;
+      btn.addEventListener('click', function () {
+        const code = pre.querySelector('code') || pre;
+        window.webkit.messageHandlers.copy.postMessage(code.innerText);
+        btn.innerHTML = CHECK_SVG;
+        btn.classList.add('copied');
+        setTimeout(function () { btn.innerHTML = COPY_SVG; btn.classList.remove('copied'); }, 1200);
+      });
+      wrap.appendChild(btn);
+    });
+  }
+
+  // Wrap each table so its rounded corners can be clipped by the wrapper.
+  function enhanceTables(root) {
+    root.querySelectorAll('table').forEach(function (table) {
+      if (table.parentElement && table.parentElement.classList.contains('table-wrap')) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'table-wrap';
+      table.parentNode.insertBefore(wrap, table);
+      wrap.appendChild(table);
+    });
+  }
+
+  function reportHeight() {
+    const h = Math.ceil(content.getBoundingClientRect().height);
+    window.webkit.messageHandlers.height.postMessage(h);
+  }
+
+  // ```mermaid blocks render to inline SVG diagrams. A block that doesn't
+  // parse (typically: still streaming in) stays visible as plain code and is
+  // retried on the next update because its wrapper re-renders. Theme follows
+  // the system appearance; a scheme flip re-renders every diagram from the
+  // source stashed on its wrapper.
+  const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  let mermaidSeq = 0;
+  function initMermaid() {
+    if (!window.mermaid) return;
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      suppressErrorRendering: true,   // no "error bomb" diagram in the DOM
+      theme: darkScheme.matches ? 'dark' : 'neutral',
+      fontFamily: '-apple-system, "SF Pro Text", system-ui, sans-serif'
+    });
+  }
+  initMermaid();
+
+  function renderMermaidInto(div, src) {
+    const id = 'mmd-' + (++mermaidSeq);
+    // Success or not, drop the temp container mermaid parks in <body>.
+    function cleanTemp() {
+      ['d' + id, id].forEach(function (tempId) {
+        const stray = document.getElementById(tempId);
+        if (stray && !div.contains(stray)) stray.remove();
+      });
+    }
+    mermaid.render(id, src).then(function (out) {
+      div.innerHTML = out.svg;
+      cleanTemp();
+      reportHeight();
+    }).catch(function () {
+      // Invalid (or incomplete) source — keep the visible code block.
+      cleanTemp();
+    });
+  }
+
+  function enhanceMermaid(root) {
+    if (!window.mermaid) return;
+    root.querySelectorAll('pre code.language-mermaid').forEach(function (code) {
+      const pre = code.parentElement;
+      const host = (pre.parentElement && pre.parentElement.classList.contains('code-block'))
+        ? pre.parentElement : pre;
+      const src = code.innerText;
+      const div = document.createElement('div');
+      div.className = 'mermaid-diagram';
+      div.dataset.src = src;
+      host.parentNode.insertBefore(div, host);
+      // Keep the source visible (listeners intact) until the diagram lands —
+      // the render is async and may fail on a half-streamed block.
+      div.appendChild(host);
+      renderMermaidInto(div, src);
+    });
+  }
+
+  darkScheme.addEventListener('change', function () {
+    initMermaid();
+    document.querySelectorAll('.mermaid-diagram').forEach(function (div) {
+      renderMermaidInto(div, div.dataset.src || '');
+    });
+  });
+
+  const KATEX_OPTS = {
+    delimiters: [
+      { left: '$$', right: '$$', display: true },
+      { left: '\\[', right: '\\]', display: true },
+      { left: '$',  right: '$',  display: false },
+      { left: '\\(', right: '\\)', display: false }
+    ],
+    throwOnError: false,
+    ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  };
+
+  // Incremental rendering: each top-level Markdown token gets its own wrapper
+  // element, keyed by the token's raw source. On a streaming update only the
+  // blocks whose raw text changed (in practice: the last one) are re-rendered —
+  // the settled prefix keeps its DOM, so long messages stay O(tail) per update
+  // and already-rendered KaTeX/code blocks never flash or re-layout.
+  let blocks = [];        // [{ raw, el }] in document order
+  let lastLinksKey = '';  // reference-link definitions invalidate everything
+
+  window.render = function (md) {
+    // Markdown treats \[ and \( as escapes, so preserve complete math spans
+    // until after Markdown has built the DOM. The placeholder includes a hash
+    // of the formula, which also invalidates the right block while streaming.
+    const protectedMath = PiMath.protect(md || '');
+    const lexed = marked.lexer(protectedMath.text);
+    const links = lexed.links || {};
+    const linksKey = Object.keys(links).sort().join('\n');
+    // 'space' tokens render to nothing; dropping them keeps one element per block.
+    const tokens = lexed.filter(function (t) { return t.type !== 'space'; });
+
+    if (linksKey !== lastLinksKey) {
+      blocks.forEach(function (b) { b.el.remove(); });
+      blocks = [];
+      lastLinksKey = linksKey;
+    }
+
+    let i = 0;
+    while (i < blocks.length && i < tokens.length && blocks[i].raw === tokens[i].raw) i++;
+    while (blocks.length > i) blocks.pop().el.remove();
+
+    for (; i < tokens.length; i++) {
+      const el = document.createElement('div');
+      el.className = 'md-block';
+      const single = [tokens[i]];
+      single.links = links;
+      el.innerHTML = marked.parser(single);
+      PiMath.restore(el, protectedMath.items);
+      try { renderMathInElement(el, KATEX_OPTS); }
+      catch (e) { console.error('KaTeX render failed', e); }
+      enhanceCodeBlocks(el);
+      enhanceTables(el);
+      enhanceMermaid(el);
+      content.appendChild(el);
+      blocks.push({ raw: tokens[i].raw, el: el });
+    }
+    reportHeight();
+  };
+
+  new ResizeObserver(reportHeight).observe(content);
+  window.addEventListener('load', reportHeight);
+</script>
+</body>
+</html>

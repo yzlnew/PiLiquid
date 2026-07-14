@@ -1,0 +1,298 @@
+/* App menu commands */
+"Open Project…" = "Open Project…";
+"New Session" = "New Session";
+"Stop Agent" = "Stop Agent";
+
+/* Install-pi card */
+"pi agent not found" = "pi agent not found";
+"Pi Liquid drives the pi command-line agent. Install it with npm, then sign in to a provider." = "Pi Liquid drives the pi command-line agent. Install it with npm, then sign in to a provider.";
+"Documentation" = "Documentation";
+"Re-check" = "Re-check";
+"Copy install command" = "Copy install command";
+
+/* Settings */
+"General" = "General";
+"Archived" = "Archived";
+"Executable" = "Executable";
+"pi executable" = "pi executable";
+"Choose…" = "Choose…";
+"Status" = "Status";
+"pi agent detected" = "pi agent detected";
+"Agent" = "Agent";
+"Provider" = "Provider";
+"Optional" = "Optional";
+"Model" = "Model";
+"Optional pattern" = "Optional pattern";
+"Defaults" = "Defaults";
+"Leave blank to use pi's configured default. Changes apply to the next session you open." = "Leave blank to use pi's configured default. Changes apply to the next session you open.";
+"Select pi" = "Select pi";
+"Archived Conversations" = "Archived Conversations";
+"No archived conversations." = "No archived conversations.";
+"Restore" = "Restore";
+"Delete permanently" = "Delete permanently";
+"Delete this conversation permanently?" = "Delete this conversation permanently?";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"“%@” and its session file will be removed. This can't be undone." = "“%@” and its session file will be removed. This can't be undone.";
+
+/* Approval / dialog buttons */
+"Confirm" = "Confirm";
+"Submit" = "Submit";
+"Dismiss" = "Dismiss";
+
+/* Welcome / root */
+"Toggle Sidebar" = "Toggle Sidebar";
+"Back" = "Back";
+"Forward" = "Forward";
+"Open Project" = "Open Project";
+"Choose the project folder the pi agent should work in." = "Choose the project folder the pi agent should work in.";
+"A native macOS client for the pi coding agent" = "A native macOS client for the pi coding agent";
+"Set pi path in Settings…" = "Set pi path in Settings…";
+"Recent" = "Recent";
+
+/* Chat screen */
+"What's next in %@?" = "What's next in %@?";
+"What's next today?" = "What's next today?";
+"New Project" = "New Project";
+"Project name" = "Project name";
+"Create" = "Create";
+"Start a new project" = "Start a new project";
+"That name can't be used as a folder." = "That name can't be used as a folder.";
+"Couldn't create the folder." = "Couldn't create the folder.";
+
+/* Composer */
+"Stop (⌘.)" = "Stop (⌘.)";
+"Send (↩)" = "Send (↩)";
+"Connecting…" = "Connecting…";
+"Steer the agent…" = "Steer the agent…";
+"Message pi…" = "Message pi…";
+"Add arguments…" = "Add arguments…";
+"Remove command" = "Remove command";
+"Show injected text" = "Show injected text";
+"Hide injected text" = "Hide injected text";
+"%lld queued steering" = "%lld queued steering";
+"%lld follow-up" = "%lld follow-up";
+"No models configured" = "No models configured";
+"Context" = "Context";
+"Tokens" = "Tokens";
+"Cost" = "Cost";
+
+/* Transcript empty state */
+"Ask pi to do something" = "Ask pi to do something";
+"It can read, edit, and run code in %@." = "It can read, edit, and run code in %@.";
+
+/* Share / export */
+"Share as Image" = "Share as Image";
+"Share Session File" = "Share Session File";
+"Share or export this conversation" = "Share or export this conversation";
+"Conversation" = "Conversation";
+
+/* Message actions */
+"Copy message" = "Copy message";
+"Fork a new session from here" = "Fork a new session from here";
+"Thinking" = "Thinking";
+
+/* Reasoning effort levels (composer slider) */
+"Off" = "Off";
+"Minimal" = "Minimal";
+"Low" = "Low";
+"Medium" = "Medium";
+"High" = "High";
+"Xhigh" = "X-High";
+
+/* Collapsed turn (folded tool calls + agent-loop output) */
+"Worked for %@" = "Worked for %@";
+"Worked · %lld steps" = "Worked · %lld steps";
+"Show steps" = "Show steps";
+"Hide steps" = "Hide steps";
+
+/* Sidebar */
+"Projects" = "Projects";
+"Recent Sessions" = "Recent Sessions";
+"Sessions" = "Sessions";
+"Settings (⌘,)" = "Settings (⌘,)";
+"Forked session" = "Forked session";
+"Disconnected" = "Disconnected";
+"Working…" = "Working…";
+"Ready" = "Ready";
+"No sessions yet" = "No sessions yet";
+"New session" = "New session";
+"No matches" = "No matches";
+"Unpin" = "Unpin";
+"Pin" = "Pin";
+"Pin to Top" = "Pin to Top";
+"Rename" = "Rename";
+"Archive" = "Archive";
+"Close Session" = "Close Session";
+"Show in Finder" = "Show in Finder";
+"Copy Working Directory" = "Copy Working Directory";
+"Remove from Sidebar" = "Remove from Sidebar";
+
+/* Branch picker */
+"Search branches" = "Search branches";
+"Branches" = "Branches";
+"No branches" = "No branches";
+"Uncommitted changes: %lld" = "Uncommitted changes: %lld";
+"New branch name" = "New branch name";
+"Create and checkout new branch…" = "Create and checkout new branch…";
+"Couldn't switch to “%@” — commit or stash changes first." = "Couldn't switch to “%@” — commit or stash changes first.";
+"Couldn't create “%@”." = "Couldn't create “%@”.";
+
+/* Search */
+"Search" = "Search";
+
+/* Notices / errors */
+"Couldn't fork from this message" = "Couldn't fork from this message";
+"Fork failed" = "Fork failed";
+"Forked into a new session" = "Forked into a new session";
+"Prompt rejected" = "Prompt rejected";
+"Compacting context…" = "Compacting context…";
+"The pi agent exited." = "The pi agent exited.";
+"Compacting context to free up space…" = "Compacting context to free up space…";
+"Compaction failed: %@" = "Compaction failed: %@";
+"Compaction aborted." = "Compaction aborted.";
+"Context compacted." = "Context compacted.";
+"Transient error — retrying (%lld/%lld) in %llds…" = "Transient error — retrying (%lld/%lld) in %llds…";
+"Retry failed." = "Retry failed.";
+"Extension error: %@" = "Extension error: %@";
+"The pi agent is not running." = "The pi agent is not running.";
+"Failed to launch pi: %@" = "Failed to launch pi: %@";
+
+/* Image attachments */
+"Choose Image…" = "Choose Image…";
+"Paste Image" = "Paste Image";
+"Attach image" = "Attach image";
+"Remove image" = "Remove image";
+
+/* Slash-command palette */
+"Commands" = "Commands";
+"Prompts" = "Prompts";
+"Skills" = "Skills";
+"Other" = "Other";
+
+/* Rename session */
+"Couldn't rename session" = "Couldn't rename session";
+
+/* Background notifications */
+"pi finished in %@" = "pi finished in %@";
+"pi finished" = "pi finished";
+"Approval needed" = "Approval needed";
+"pi is waiting for your confirmation." = "pi is waiting for your confirmation.";
+
+/* Plan mode */
+"Enter plan mode (read-only)" = "Enter plan mode (read-only)";
+"Exit plan mode" = "Exit plan mode";
+"Plan" = "Plan";
+"Plan mode" = "Plan mode";
+"Exploring…" = "Exploring…";
+"Plan complete" = "Plan complete";
+"Command failed" = "Command failed";
+"Plan Mode" = "Plan Mode";
+"Exit Plan Mode" = "Exit Plan Mode";
+"Actions" = "Actions";
+
+/* Plan mode — execute in new session */
+"Execute" = "Execute";
+"Execute this plan in a new session?" = "Execute this plan in a new session?";
+"A fresh session will carry out the plan with full write access. This planning session stays open." = "A fresh session will carry out the plan with full write access. This planning session stays open.";
+"Execute the following implementation plan step by step:" = "Execute the following implementation plan step by step:";
+
+/* Stall watchdog */
+"No response from the model yet — you can keep waiting, or stop and retry." = "No response from the model yet — you can keep waiting, or stop and retry.";
+
+/* Worktree isolation */
+"New Session in Worktree" = "New Session in Worktree";
+"Runs in an isolated worktree" = "Runs in an isolated worktree";
+"Isolated" = "Isolated";
+"Merge Back into %@…" = "Merge Back into %@…";
+"Discard Worktree…" = "Discard Worktree…";
+"This session works in an isolated copy — the project stays untouched until you merge" = "This session works in an isolated copy — the project stays untouched until you merge";
+"Merge this session's changes back into %@?" = "Merge this session's changes back into %@?";
+"Discard this worktree?" = "Discard this worktree?";
+"Merge" = "Merge";
+"Discard" = "Discard";
+"The changes are staged (not committed) in the main repository, then this worktree is removed." = "The changes are staged (not committed) in the main repository, then this worktree is removed.";
+"All changes made in this session's worktree are permanently lost." = "All changes made in this session's worktree are permanently lost.";
+"Worktree closed" = "Worktree closed";
+"Couldn't finish the worktree" = "Couldn't finish the worktree";
+"Couldn't create a worktree — the project must be a git repository with at least one commit." = "Couldn't create a worktree — the project must be a git repository with at least one commit.";
+"Couldn't commit the worktree's changes." = "Couldn't commit the worktree's changes.";
+"No changes to merge — worktree removed." = "No changes to merge — worktree removed.";
+"The main repository has uncommitted changes — commit or stash them first." = "The main repository has uncommitted changes — commit or stash them first.";
+"Merge conflict — merge branch %@ manually." = "Merge conflict — merge branch %@ manually.";
+"Changes staged in %@ — review and commit them." = "Changes staged in %@ — review and commit them.";
+"Worktree discarded." = "Worktree discarded.";
+"Couldn't remove the worktree." = "Couldn't remove the worktree.";
+"OK" = "OK";
+
+/* Actionable notifications */
+"Approve" = "Approve";
+"Deny" = "Deny";
+
+/* Turn diff review */
+"%lld files changed" = "%lld files changed";
+"Review the files this turn actually changed" = "Review the files this turn actually changed";
+"Changes this turn" = "Changes this turn";
+"Revert “%@”?" = "Revert “%@”?";
+"Revert" = "Revert";
+"The turn created this file — reverting deletes it." = "The turn created this file — reverting deletes it.";
+"The turn deleted this file — reverting restores it." = "The turn deleted this file — reverting restores it.";
+"The file returns to its state from before this turn." = "The file returns to its state from before this turn.";
+"Binary file changed" = "Binary file changed";
+"Renamed from %@" = "Renamed from %@";
+"Revert this file to its pre-turn state" = "Revert this file to its pre-turn state";
+"Close" = "Close";
+
+/* Inspector */
+"Review" = "Review";
+"Files" = "Files";
+"No changes to review yet" = "No changes to review yet";
+"No project open" = "No project open";
+"Show or hide the inspector (⌥⌘I)" = "Show or hide the inspector (⌥⌘I)";
+"Copy Path" = "Copy Path";
+"new" = "new";
+"deleted" = "deleted";
+"renamed" = "renamed";
+
+/* P1 parity additions (2026-07): clone, follow-up, shell mode, session options,
+   cycling, HTML export, timeline, warm pool. */
+"Follow-up rejected" = "Follow-up rejected";
+"Clone failed" = "Clone failed";
+"Cloned into a new session" = "Cloned into a new session";
+"Shell output truncated — full log: %@" = "Shell output truncated — full log: %@";
+"Export failed" = "Export failed";
+"Exported to %@" = "Exported to %@";
+"Stop shell command" = "Stop shell command";
+"Run shell command (↩)" = "Run shell command (↩)";
+"Queue a follow-up…" = "Queue a follow-up…";
+"Steer" = "Steer";
+"Follow-up" = "Follow-up";
+"Steering lands after the current turn; a follow-up waits until the run finishes" = "Steering lands after the current turn; a follow-up waits until the run finishes";
+"Clone Session" = "Clone Session";
+"Cancel Auto-Retry" = "Cancel Auto-Retry";
+"Session Options" = "Session Options";
+"Auto-Compaction" = "Auto-Compaction";
+"Auto-Retry" = "Auto-Retry";
+"Steering Delivery" = "Steering Delivery";
+"Follow-Up Delivery" = "Follow-Up Delivery";
+"One at a Time" = "One at a Time";
+"All at Once" = "All at Once";
+"Export as HTML…" = "Export as HTML…";
+"Timeline — jump back to an earlier prompt" = "Timeline — jump back to an earlier prompt";
+"Jump back to a prompt — the session forks from there." = "Jump back to a prompt — the session forks from there.";
+"No prompts yet" = "No prompts yet";
+"Fork from the latest prompt (undo the last turn)" = "Fork from the latest prompt (undo the last turn)";
+"Fork from this prompt" = "Fork from this prompt";
+"Cycle Model" = "Cycle Model";
+"Cycle Thinking Level" = "Cycle Thinking Level";
+"Compact Context" = "Compact Context";
+"Pre-warm recent projects" = "Pre-warm recent projects";
+"Keeps an idle pi process ready for your most recent projects so switching to them is instant. Each warmed project holds about 150 MB of memory." = "Keeps an idle pi process ready for your most recent projects so switching to them is instant. Each warmed project holds about 150 MB of memory.";
+"Run a shell command…" = "Run a shell command…";
+"Exit shell mode" = "Exit shell mode";
+"App" = "App";
+"Compact the conversation to free context — optional focus instructions after the command" = "Compact the conversation to free context — optional focus instructions after the command";
+"Optional focus for the summary…" = "Optional focus for the summary…";
+"Optionally start planning with a prompt…" = "Optionally start planning with a prompt…";
+"Edit and resend from here" = "Edit and resend from here";
+"Resend" = "Resend";

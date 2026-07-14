@@ -1,0 +1,92 @@
+name: Build macOS app
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macos-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Test and build universal app
+    runs-on: macos-26
+    timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+      DERIVED_DATA: ${{ github.workspace }}/build/DerivedData
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+
+      - name: Select toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Run tests
+        run: |
+          xcodebuild \
+            -project PiLiquid.xcodeproj \
+            -scheme PiLiquid \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            -derivedDataPath "$DERIVED_DATA" \
+            CODE_SIGNING_ALLOWED=NO \
+            test
+
+      - name: Build universal release
+        run: |
+          xcodebuild \
+            -project PiLiquid.xcodeproj \
+            -scheme PiLiquid \
+            -configuration Release \
+            -destination 'generic/platform=macOS' \
+            -derivedDataPath "$DERIVED_DATA" \
+            ARCHS='arm64 x86_64' \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
+
+      - name: Sign and verify app
+        run: |
+          app="$DERIVED_DATA/Build/Products/Release/PiLiquid.app"
+          executable="$app/Contents/MacOS/PiLiquid"
+
+          codesign --force --deep --sign - "$app"
+          codesign --verify --deep --strict "$app"
+          lipo -verify_arch arm64 x86_64 "$executable"
+          lipo -info "$executable"
+
+      - name: Package app
+        run: |
+          mkdir -p dist
+          ditto -c -k --sequesterRsrc --keepParent \
+            "$DERIVED_DATA/Build/Products/Release/PiLiquid.app" \
+            dist/PiLiquid-macos-universal.zip
+          shasum -a 256 dist/PiLiquid-macos-universal.zip \
+            > dist/PiLiquid-macos-universal.zip.sha256
+
+      - name: Upload app artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: PiLiquid-macos-universal
+          path: |
+            dist/PiLiquid-macos-universal.zip
+            dist/PiLiquid-macos-universal.zip.sha256
+          if-no-files-found: error
+          retention-days: 14

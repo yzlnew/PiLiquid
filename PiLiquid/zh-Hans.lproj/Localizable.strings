@@ -1,0 +1,298 @@
+/* App menu commands */
+"Open Project…" = "打开项目…";
+"New Session" = "新建会话";
+"Stop Agent" = "停止智能体";
+
+/* Install-pi card */
+"pi agent not found" = "未找到 pi 智能体";
+"Pi Liquid drives the pi command-line agent. Install it with npm, then sign in to a provider." = "Pi Liquid 依赖 pi 命令行智能体。请用 npm 安装，然后登录服务商。";
+"Documentation" = "文档";
+"Re-check" = "重新检测";
+"Copy install command" = "复制安装命令";
+
+/* Settings */
+"General" = "通用";
+"Archived" = "归档";
+"Executable" = "可执行文件";
+"pi executable" = "pi 可执行文件";
+"Choose…" = "选择…";
+"Status" = "状态";
+"pi agent detected" = "已检测到 pi 智能体";
+"Agent" = "智能体";
+"Provider" = "服务商";
+"Optional" = "可选";
+"Model" = "模型";
+"Optional pattern" = "可选匹配模式";
+"Defaults" = "默认值";
+"Leave blank to use pi's configured default. Changes apply to the next session you open." = "留空则使用 pi 的默认配置。更改将在下次打开会话时生效。";
+"Select pi" = "选择 pi";
+"Archived Conversations" = "已归档的对话";
+"No archived conversations." = "暂无已归档的对话。";
+"Restore" = "恢复";
+"Delete permanently" = "永久删除";
+"Delete this conversation permanently?" = "永久删除这个对话？";
+"Delete" = "删除";
+"Cancel" = "取消";
+"“%@” and its session file will be removed. This can't be undone." = "将删除“%@”及其会话文件，此操作无法撤销。";
+
+/* Approval / dialog buttons */
+"Confirm" = "确认";
+"Submit" = "提交";
+"Dismiss" = "关闭";
+
+/* Welcome / root */
+"Toggle Sidebar" = "切换边栏";
+"Back" = "后退";
+"Forward" = "前进";
+"Open Project" = "打开项目";
+"Choose the project folder the pi agent should work in." = "选择 pi 智能体要工作的项目文件夹。";
+"A native macOS client for the pi coding agent" = "pi 编程智能体的原生 macOS 客户端";
+"Set pi path in Settings…" = "在设置中指定 pi 路径…";
+"Recent" = "最近";
+
+/* Chat screen */
+"What's next in %@?" = "今天在 %@ 做点什么？";
+"What's next today?" = "今天做点什么？";
+"New Project" = "新建项目";
+"Project name" = "项目名称";
+"Create" = "创建";
+"Start a new project" = "新建项目";
+"That name can't be used as a folder." = "该名称无法用作文件夹。";
+"Couldn't create the folder." = "无法创建文件夹。";
+
+/* Composer */
+"Stop (⌘.)" = "停止 (⌘.)";
+"Send (↩)" = "发送 (↩)";
+"Connecting…" = "连接中…";
+"Steer the agent…" = "引导智能体…";
+"Message pi…" = "给 pi 发消息…";
+"Add arguments…" = "补充参数…";
+"Remove command" = "移除命令";
+"Show injected text" = "展开注入内容";
+"Hide injected text" = "收起注入内容";
+"%lld queued steering" = "%lld 条引导排队中";
+"%lld follow-up" = "%lld 条后续";
+"No models configured" = "未配置模型";
+"Context" = "上下文";
+"Tokens" = "Token";
+"Cost" = "费用";
+
+/* Transcript empty state */
+"Ask pi to do something" = "让 pi 做点什么";
+"It can read, edit, and run code in %@." = "它可以在 %@ 中读取、编辑并运行代码。";
+
+/* Share / export */
+"Share as Image" = "分享为长图";
+"Share Session File" = "分享会话文件";
+"Share or export this conversation" = "分享或导出此会话";
+"Conversation" = "会话";
+
+/* Message actions */
+"Copy message" = "复制消息";
+"Fork a new session from here" = "从这里分叉出新会话";
+"Thinking" = "思考";
+
+/* Reasoning effort levels (composer slider) */
+"Off" = "关闭";
+"Minimal" = "最低";
+"Low" = "低";
+"Medium" = "中";
+"High" = "高";
+"Xhigh" = "极高";
+
+/* Collapsed turn (folded tool calls + agent-loop output) */
+"Worked for %@" = "已处理 · 用时 %@";
+"Worked · %lld steps" = "已处理 · %lld 步";
+"Show steps" = "展开处理过程";
+"Hide steps" = "收起处理过程";
+
+/* Sidebar */
+"Projects" = "项目";
+"Recent Sessions" = "最近使用";
+"Sessions" = "会话";
+"Settings (⌘,)" = "设置 (⌘,)";
+"Forked session" = "分叉的会话";
+"Disconnected" = "已断开";
+"Working…" = "工作中…";
+"Ready" = "就绪";
+"No sessions yet" = "暂无会话";
+"New session" = "新会话";
+"No matches" = "无匹配项";
+"Unpin" = "取消置顶";
+"Pin" = "置顶";
+"Pin to Top" = "置顶";
+"Rename" = "重命名";
+"Archive" = "归档";
+"Close Session" = "关闭会话";
+"Show in Finder" = "在 Finder 中显示";
+"Copy Working Directory" = "复制工作目录";
+"Remove from Sidebar" = "从侧边栏移除";
+
+/* Branch picker */
+"Search branches" = "搜索分支";
+"Branches" = "分支";
+"No branches" = "暂无分支";
+"Uncommitted changes: %lld" = "未提交更改：%lld";
+"New branch name" = "新分支名称";
+"Create and checkout new branch…" = "创建并切换到新分支…";
+"Couldn't switch to “%@” — commit or stash changes first." = "无法切换到“%@”——请先提交或暂存更改。";
+"Couldn't create “%@”." = "无法创建“%@”。";
+
+/* Search */
+"Search" = "搜索";
+
+/* Notices / errors */
+"Couldn't fork from this message" = "无法从此消息分叉";
+"Fork failed" = "分叉失败";
+"Forked into a new session" = "已分叉为新会话";
+"Prompt rejected" = "提示被拒绝";
+"Compacting context…" = "正在压缩上下文…";
+"The pi agent exited." = "pi 智能体已退出。";
+"Compacting context to free up space…" = "正在压缩上下文以释放空间…";
+"Compaction failed: %@" = "压缩失败：%@";
+"Compaction aborted." = "压缩已中止。";
+"Context compacted." = "上下文已压缩。";
+"Transient error — retrying (%lld/%lld) in %llds…" = "临时错误——重试（%lld/%lld），%lld 秒后…";
+"Retry failed." = "重试失败。";
+"Extension error: %@" = "扩展错误：%@";
+"The pi agent is not running." = "pi 智能体未在运行。";
+"Failed to launch pi: %@" = "启动 pi 失败：%@";
+
+/* Image attachments */
+"Choose Image…" = "选择图片…";
+"Paste Image" = "粘贴图片";
+"Attach image" = "添加图片";
+"Remove image" = "移除图片";
+
+/* Slash-command palette */
+"Commands" = "命令";
+"Prompts" = "提示词";
+"Skills" = "技能";
+"Other" = "其他";
+
+/* Rename session */
+"Couldn't rename session" = "无法重命名会话";
+
+/* Background notifications */
+"pi finished in %@" = "pi 已在 %@ 中完成";
+"pi finished" = "pi 已完成";
+"Approval needed" = "需要批准";
+"pi is waiting for your confirmation." = "pi 正在等待你的确认。";
+
+/* Plan mode */
+"Enter plan mode (read-only)" = "进入计划模式（只读）";
+"Exit plan mode" = "退出计划模式";
+"Plan" = "计划";
+"Plan mode" = "计划模式";
+"Exploring…" = "探索中…";
+"Plan complete" = "计划完成";
+"Command failed" = "命令执行失败";
+"Plan Mode" = "计划模式";
+"Exit Plan Mode" = "退出计划模式";
+"Actions" = "操作";
+
+/* Plan mode — execute in new session */
+"Execute" = "执行";
+"Execute this plan in a new session?" = "在新会话中执行此计划?";
+"A fresh session will carry out the plan with full write access. This planning session stays open." = "将新建一个具有完整写入权限的会话来执行计划,当前规划会话会保留。";
+"Execute the following implementation plan step by step:" = "请按以下实现计划逐步执行:";
+
+/* Stall watchdog */
+"No response from the model yet — you can keep waiting, or stop and retry." = "模型暂无响应——可以继续等待,或点停止后重试。";
+
+/* Worktree isolation */
+"New Session in Worktree" = "在 Worktree 中新建会话";
+"Runs in an isolated worktree" = "运行在隔离的 worktree 中";
+"Isolated" = "隔离";
+"Merge Back into %@…" = "合并回 %@…";
+"Discard Worktree…" = "丢弃 Worktree…";
+"This session works in an isolated copy — the project stays untouched until you merge" = "此会话在隔离副本中工作——合并前项目本体不受影响";
+"Merge this session's changes back into %@?" = "将此会话的改动合并回 %@?";
+"Discard this worktree?" = "丢弃此 worktree?";
+"Merge" = "合并";
+"Discard" = "丢弃";
+"The changes are staged (not committed) in the main repository, then this worktree is removed." = "改动将暂存(不提交)到主仓库,随后移除此 worktree。";
+"All changes made in this session's worktree are permanently lost." = "此会话 worktree 中的所有改动将永久丢失。";
+"Worktree closed" = "Worktree 已关闭";
+"Couldn't finish the worktree" = "无法完成 worktree 操作";
+"Couldn't create a worktree — the project must be a git repository with at least one commit." = "无法创建 worktree——项目必须是至少有一个提交的 git 仓库。";
+"Couldn't commit the worktree's changes." = "无法提交 worktree 中的改动。";
+"No changes to merge — worktree removed." = "没有需要合并的改动——worktree 已移除。";
+"The main repository has uncommitted changes — commit or stash them first." = "主仓库有未提交的改动——请先提交或 stash。";
+"Merge conflict — merge branch %@ manually." = "合并冲突——请手动合并分支 %@。";
+"Changes staged in %@ — review and commit them." = "改动已暂存到 %@——请检查并提交。";
+"Worktree discarded." = "Worktree 已丢弃。";
+"Couldn't remove the worktree." = "无法移除 worktree。";
+"OK" = "好";
+
+/* Actionable notifications */
+"Approve" = "批准";
+"Deny" = "拒绝";
+
+/* Turn diff review */
+"%lld files changed" = "%lld 个文件有改动";
+"Review the files this turn actually changed" = "查看本回合实际改动的文件";
+"Changes this turn" = "本回合改动";
+"Revert “%@”?" = "撤销对“%@”的改动?";
+"Revert" = "撤销";
+"The turn created this file — reverting deletes it." = "该文件由本回合创建,撤销将删除它。";
+"The turn deleted this file — reverting restores it." = "该文件被本回合删除,撤销将恢复它。";
+"The file returns to its state from before this turn." = "文件将恢复到本回合开始前的状态。";
+"Binary file changed" = "二进制文件有改动";
+"Renamed from %@" = "重命名自 %@";
+"Revert this file to its pre-turn state" = "将此文件恢复到回合前的状态";
+"Close" = "关闭";
+
+/* Inspector */
+"Review" = "审查";
+"Files" = "文件";
+"No changes to review yet" = "暂无可审查的改动";
+"No project open" = "未打开项目";
+"Show or hide the inspector (⌥⌘I)" = "显示/隐藏检查器 (⌥⌘I)";
+"Copy Path" = "拷贝路径";
+"new" = "新增";
+"deleted" = "已删除";
+"renamed" = "重命名";
+
+/* P1 parity additions (2026-07): clone, follow-up, shell mode, session options,
+   cycling, HTML export, timeline, warm pool. */
+"Follow-up rejected" = "追加消息被拒绝";
+"Clone failed" = "克隆失败";
+"Cloned into a new session" = "已克隆为新会话";
+"Shell output truncated — full log: %@" = "命令输出已截断 — 完整日志：%@";
+"Export failed" = "导出失败";
+"Exported to %@" = "已导出到 %@";
+"Stop shell command" = "停止命令";
+"Run shell command (↩)" = "运行命令 (↩)";
+"Queue a follow-up…" = "排队追加消息…";
+"Steer" = "引导";
+"Follow-up" = "追加";
+"Steering lands after the current turn; a follow-up waits until the run finishes" = "引导会在当前回合结束后送达；追加消息等整个运行完成后再送达";
+"Clone Session" = "克隆会话";
+"Cancel Auto-Retry" = "取消自动重试";
+"Session Options" = "会话选项";
+"Auto-Compaction" = "自动压缩";
+"Auto-Retry" = "自动重试";
+"Steering Delivery" = "引导送达方式";
+"Follow-Up Delivery" = "追加送达方式";
+"One at a Time" = "逐条";
+"All at Once" = "一次全部";
+"Export as HTML…" = "导出为 HTML…";
+"Timeline — jump back to an earlier prompt" = "时间线 — 回到更早的提问";
+"Jump back to a prompt — the session forks from there." = "点击一条提问，会话将从该处分叉。";
+"No prompts yet" = "还没有提问";
+"Fork from the latest prompt (undo the last turn)" = "从最新提问分叉（撤销上一回合）";
+"Fork from this prompt" = "从这条提问分叉";
+"Cycle Model" = "切换模型";
+"Cycle Thinking Level" = "切换思考等级";
+"Compact Context" = "压缩上下文";
+"Pre-warm recent projects" = "预热最近项目";
+"Keeps an idle pi process ready for your most recent projects so switching to them is instant. Each warmed project holds about 150 MB of memory." = "为最近打开过的项目各保留一个空闲的 pi 进程，切换项目即刻可用。每个预热项目约占用 150 MB 内存。";
+"Run a shell command…" = "输入要执行的命令…";
+"Exit shell mode" = "退出命令模式";
+"App" = "应用";
+"Compact the conversation to free context — optional focus instructions after the command" = "压缩对话以释放上下文 — 命令后可附加压缩重点说明";
+"Optional focus for the summary…" = "压缩重点说明（可选）…";
+"Optionally start planning with a prompt…" = "可直接输入要规划的任务…";
+"Edit and resend from here" = "编辑并从这里重新发送";
+"Resend" = "重新发送";

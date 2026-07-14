@@ -1,0 +1,12 @@
+# Xcode / build
+build/
+DerivedData/
+dist/
+*.xcuserstate
+xcuserdata/
+
+# XcodeGen output (regenerate with `xcodegen generate`)
+PiLiquid.xcodeproj/
+
+# macOS
+.DS_Store

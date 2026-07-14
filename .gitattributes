@@ -1,0 +1,6 @@
+*.pdf binary
+*.png binary
+*.woff2 binary
+
+PiLiquid/Web/*.min.css -diff linguist-generated=true
+PiLiquid/Web/*.min.js -diff linguist-generated=true

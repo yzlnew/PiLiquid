@@ -1,0 +1,75 @@
+name: PiLiquid
+options:
+  bundleIdPrefix: com.piliquid
+  deploymentTarget:
+    macOS: "26.0"
+  createIntermediateGroups: true
+  developmentLanguage: en
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    # A coding-agent GUI must spawn `pi` and touch arbitrary project files,
+    # so the app is intentionally NOT sandboxed. Hardened runtime stays off to
+    # keep local unsigned dev builds runnable.
+    ENABLE_HARDENED_RUNTIME: NO
+targets:
+  PiLiquid:
+    type: application
+    platform: macOS
+    sources:
+      - path: PiLiquid
+        excludes:
+          - Web
+          - Extensions
+      # Folder reference (blue folder) so Web/ — index.html, katex/marked JS+CSS,
+      # and fonts/ — is copied into the bundle with its directory structure intact.
+      # KaTeX's CSS references fonts via relative `fonts/…` paths, which a flattened
+      # resource copy would break.
+      - path: PiLiquid/Web
+        type: folder
+        buildPhase: resources
+      # Folder reference so vendored pi extensions (plan-mode: index.ts + utils.ts)
+      # ship with their structure intact. PiClient loads them via `pi -e <dir>`.
+      - path: PiLiquid/Extensions
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.piliquid.PiLiquid
+        INFOPLIST_FILE: PiLiquid/Info.plist
+        CODE_SIGN_ENTITLEMENTS: PiLiquid/PiLiquid.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: YES
+        COMBINE_HIDPI_IMAGES: YES
+  # Regression tests: RPC protocol decoding (against captured pi 0.80.2 traffic),
+  # ChatModel event folding, session-list logic, and a live pi contract suite
+  # (skipped when `pi` isn't installed). Hosted in the app so @testable works;
+  # RootView stays inert under a test run (XCTestConfigurationFilePath guard).
+  PiLiquidTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - PiLiquidTests
+    dependencies:
+      - target: PiLiquid
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/PiLiquid.app/Contents/MacOS/PiLiquid
+        BUNDLE_LOADER: $(TEST_HOST)
+schemes:
+  PiLiquid:
+    build:
+      targets:
+        PiLiquid: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - PiLiquidTests
