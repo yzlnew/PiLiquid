@@ -77,8 +77,8 @@ jobs:
 
           codesign --force --deep --sign - "$app"
           codesign --verify --deep --strict "$app"
-          lipo -verify_arch arm64 x86_64 "$executable"
-          lipo -info "$executable"
+          lipo "$executable" -verify_arch arm64 x86_64
+          lipo "$executable" -info
 
       - name: Package app
         run: |
